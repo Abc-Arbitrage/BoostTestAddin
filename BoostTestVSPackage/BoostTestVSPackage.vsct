@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+  <!--The Commands section is where we the commands, menus and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidBoostTestVSPackagePkg">
+    <!-- Inside this section we have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+
+    <Menus>
+      <!--IDM_VS_CTXT_CODEWIN = context menu -->
+
+      <Menu guid="guidBoostTestVSPackageCmdSet" id="BoostTestMenu" priority="0x0000" type="Menu">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+        <Strings>
+          <ButtonText>BoostTest</ButtonText>
+          <CommandName>BoostTest</CommandName>
+        </Strings>
+      </Menu>
+
+      <Menu guid="guidBoostTestVSPackageCmdSet" id="BoostTestDebugMenu" priority="0x0100" type="MenuController">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestMenu" />
+        <Strings>
+          <ButtonText>BoostTestDebug</ButtonText>
+          <CommandName>BoostTestDebug</CommandName>
+        </Strings>
+      </Menu>
+      
+    </Menus>
+    
+    <!-- In this section you can define new menu groups. A menu group is a container for 
+         other menus or buttons (commands); from a visual point of view you can see the 
+         group as the part of a menu contained between two lines. The parent of a group 
+         must be a menu. -->
+    <Groups>
+
+      <Group guid="guidBoostTestVSPackageCmdSet" id="BoostTestDebugGroup" priority="0x0100">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestMenu"/>
+      </Group>
+      
+      <Group guid="guidBoostTestVSPackageCmdSet" id="BoostTestRunGroup" priority="0x0200">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestMenu"/>
+      </Group>
+
+      <Group guid="guidBoostTestVSPackageCmdSet" id="BoostTestConfigMenuGroup" priority="0x0300">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestMenu"/>
+      </Group>
+
+    </Groups>
+
+    <!--Buttons section. -->
+    <!--This section defines the elements the user can interact with, like a menu command or a button 
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority. 
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidDebugCurrentTest" priority="0x0100" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestDebugGroup" />
+        <Icon guid="guidImages" id="icoDebug" />
+        <Strings>
+          <ButtonText>Debug current test</ButtonText>
+          <CommandName>DebugCurrentTest</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.DebugCurrentTest</CanonicalName>
+          <ToolTipText>Executes the current test under the debugger</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentTest" priority="0x0101" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestRunGroup" />
+        <Icon guid="guidImages" id="icoRun" />
+        <Strings>
+          <ButtonText>Run current test</ButtonText>
+          <CommandName>RunCurrentTest</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.RunCurrentTest</CanonicalName>
+          <ToolTipText>Executes the current test</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentSuite" priority="0x0103" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestRunGroup" />
+        <!--<Icon guid="guidImages" id="icoRun" />-->
+        <Strings>
+          <ButtonText>Run the current suite</ButtonText>
+          <CommandName>RunCurrentSuite</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.RunCurrentSuite</CanonicalName>
+          <ToolTipText>Executes the current test suite</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentProject" priority="0x0105" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestRunGroup" />
+        <!--<Icon guid="guidImages" id="icoRun" />-->
+        <Strings>
+          <ButtonText>Run current project</ButtonText>
+          <CommandName>RunCurrentProject</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.RunCurrentProject</CanonicalName>
+          <ToolTipText>Executes the current project</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidDetectMemoryLeak" priority="0x0106" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestConfigMenuGroup" />
+        <Icon guid="guidImages" id="icoDetectMemoryLeak" />
+        <Strings>
+          <ButtonText>Detect memory leak</ButtonText>
+          <CommandName>DetectMemoryLeak</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.DetectMemoryLeak</CanonicalName>
+          <ToolTipText>Detect memory leak</ToolTipText>
+        </Strings>
+      </Button>
+
+    </Buttons>
+
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others: 
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+            inside a button definition. An important aspect of this declaration is that the element id 
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <!-- <Bitmap guid="guidImages" href="Resources\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows"/> -->
+      <Bitmap guid="guidImages" href="Resources\Images.png" usedList="icoDebug, icoRun, icoDetectMemoryLeak" />
+      <!--  -->
+    </Bitmaps>
+
+  </Commands>
+
+
+  <KeyBindings>
+    <KeyBinding guid="guidBoostTestVSPackageCmdSet" id="cmdidDebugCurrentTest" editor="guidVSStd97" key1="T" key2="D" mod1="Control Shift Alt"/>
+    <KeyBinding guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentTest" editor="guidVSStd97" key1="T" key2="R" mod1="Control Shift Alt"/>
+    <KeyBinding guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentSuite" editor="guidVSStd97" key1="T" key2="S" mod1="Control Shift Alt"/>
+    <KeyBinding guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentProject" editor="guidVSStd97" key1="T" key2="P" mod1="Control Shift Alt"/>
+  </KeyBindings>
+
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidBoostTestVSPackagePkg" value="{0a66f06a-ea9f-449b-bb85-02e20553b898}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidBoostTestVSPackageCmdSet" value="{b1828bb5-b0ac-44dc-8a9d-6cab93baa19c}">
+
+      <IDSymbol name="BoostTestMenu" value="0x1020" />
+      <IDSymbol name="BoostTestDebugMenu" value="0x1021" />
+
+      <IDSymbol name="BoostTestDebugGroup" value="0x1031" />
+      <IDSymbol name="BoostTestRunGroup" value="0x1032" />
+      <IDSymbol name="BoostTestConfigMenuGroup" value="0x1033" />
+
+      <IDSymbol name="cmdidDebugCurrentTest" value="0x0100" />
+      <IDSymbol name="cmdidRunCurrentTest" value="0x0101" />
+      <IDSymbol name="cmdidRunCurrentSuite" value="0x0103" />
+      <IDSymbol name="cmdidRunCurrentProject" value="0x0105" />
+      <IDSymbol name="cmdidDetectMemoryLeak" value="0x0106" />
+    </GuidSymbol>
+
+
+    <GuidSymbol name="guidImages" value="{d2b0abb8-b5ea-40a8-aa0a-0b50b0e55d7e}" >
+      <IDSymbol name="icoDebug" value="1" />
+      <IDSymbol name="icoRun" value="2" />
+      <IDSymbol name="icoDetectMemoryLeak" value="3" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>

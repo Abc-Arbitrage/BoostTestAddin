@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A927530C-2E7E-449A-883E-858E4F58E8B8}"
+	ProjectSection(SolutionItems) = preProject
+		rakefile.rb = rakefile.rb
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoostTestVSPackage", "BoostTestVSPackage\BoostTestVSPackage.csproj", "{99FC7DB5-9954-4B2C-A630-E93906CBDDC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoostTestVSPackage.Tests", "BoostTestVSPackage.Tests\BoostTestVSPackage.Tests.csproj", "{2D2716EC-FD48-4BEF-8ADB-8264D74952B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99FC7DB5-9954-4B2C-A630-E93906CBDDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FC7DB5-9954-4B2C-A630-E93906CBDDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FC7DB5-9954-4B2C-A630-E93906CBDDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FC7DB5-9954-4B2C-A630-E93906CBDDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D2716EC-FD48-4BEF-8ADB-8264D74952B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2716EC-FD48-4BEF-8ADB-8264D74952B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2716EC-FD48-4BEF-8ADB-8264D74952B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2716EC-FD48-4BEF-8ADB-8264D74952B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
