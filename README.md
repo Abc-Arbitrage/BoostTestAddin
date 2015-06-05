@@ -12,7 +12,7 @@ Usage
 
 After installation, a new menu named *'BoostTest'* should appear in the Visual Studio menu bar. 
 
-![screenshot](https://github.com/Andreone/BoostTestAddin/blob/master/img/screenshot.png)
+![screenshot](https://github.com/Abc-Arbitrage/BoostTestAddin/blob/master/img/screenshot.png)
 
 To run a test case, open the source file containing the test, place the cursor inside the unit test and select *'Run current test'*.
 
