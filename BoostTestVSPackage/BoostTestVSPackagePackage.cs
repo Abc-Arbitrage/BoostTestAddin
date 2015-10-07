@@ -31,9 +31,21 @@ namespace BoostTestVSPackage
     [Guid(GuidList.guidBoostTestVSPackagePkgString)]
     public sealed class BoostTestVSPackagePackage : Package
     {
+        private class Bool
+        {
+            public bool Value { get; set; }
+
+            public Bool(bool value = false)
+            {
+                Value = value;
+            }
+        }
+
+
         private DTE2 _applicationObject;
-        private bool _optionDetectMemoryLeak;
-        private bool _optionShowProgress;
+        private Bool _optionDetectMemoryLeak = new Bool();
+        private Bool _optionShowProgress = new Bool();
+        private Bool _optionRunInRandomOrder = new Bool();
 
         /// <summary>
         ///     Default constructor of the package.
@@ -96,41 +108,46 @@ namespace BoostTestVSPackage
 
             {
                 var menuCommandId = new CommandID(GuidList.guidBoostTestVSPackageCmdSet, (int)PkgCmdIdList.cmdidDetectMemoryLeak);
-                var menuCommand = new MenuCommand((sender, args) =>
-                {
-                    var menu = sender as MenuCommand;
-                    if (menu == null)
-                        return;
-
-                    menu.Checked = !menu.Checked;
-                    _optionDetectMemoryLeak = menu.Checked;
-                }, menuCommandId);
+                var menuCommand = MakeCheckableMenuCommand(menuCommandId, _optionDetectMemoryLeak);
                 mcs.AddCommand(menuCommand);
             }
 
             {
                 var menuCommandId = new CommandID(GuidList.guidBoostTestVSPackageCmdSet, (int)PkgCmdIdList.cmdidOptionShowProgress);
-                var menuCommand = new MenuCommand((sender, args) =>
-                {
-                    var menu = sender as MenuCommand;
-                    if (menu == null)
-                        return;
+                var menuCommand = MakeCheckableMenuCommand(menuCommandId, _optionShowProgress);
+                mcs.AddCommand(menuCommand);
+            }
 
-                    menu.Checked = !menu.Checked;
-                    _optionShowProgress = menu.Checked;
-                }, menuCommandId);
+            {
+                var menuCommandId = new CommandID(GuidList.guidBoostTestVSPackageCmdSet, (int)PkgCmdIdList.cmdidOptionRunInRandomOrder);
+                var menuCommand = MakeCheckableMenuCommand(menuCommandId, _optionRunInRandomOrder);
                 mcs.AddCommand(menuCommand);
             }
         }
 
         #endregion
 
+        private MenuCommand MakeCheckableMenuCommand(CommandID menuCommandId, Bool @bool)
+        {
+            return new MenuCommand((sender, args) =>
+            {
+                var menu = sender as MenuCommand;
+                if (menu == null)
+                    return;
+
+                menu.Checked = !menu.Checked;
+                @bool.Value = menu.Checked;
+            }, menuCommandId);
+        }
+
+
         private TestRunnerOptions MakeTestRunnerOptions(bool withDebugger)
         {
             var testRunnerOptions = new TestRunnerOptions
             {
-                DetectMemoryLeak = _optionDetectMemoryLeak,
-                ShowProgress = _optionShowProgress,
+                DetectMemoryLeak = _optionDetectMemoryLeak.Value,
+                ShowProgress = _optionShowProgress.Value,
+                RunInRandomOrder = _optionRunInRandomOrder.Value,
                 DryRun = true,
                 WithDebugger = withDebugger,
             };
