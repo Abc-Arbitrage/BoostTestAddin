@@ -32,7 +32,8 @@ namespace BoostTestVSPackage
     public sealed class BoostTestVSPackagePackage : Package
     {
         private DTE2 _applicationObject;
-        private bool _detectMemoryLeak;
+        private bool _optionDetectMemoryLeak;
+        private bool _optionShowProgress;
 
         /// <summary>
         ///     Default constructor of the package.
@@ -102,7 +103,21 @@ namespace BoostTestVSPackage
                         return;
 
                     menu.Checked = !menu.Checked;
-                    _detectMemoryLeak = !_detectMemoryLeak;
+                    _optionDetectMemoryLeak = menu.Checked;
+                }, menuCommandId);
+                mcs.AddCommand(menuCommand);
+            }
+
+            {
+                var menuCommandId = new CommandID(GuidList.guidBoostTestVSPackageCmdSet, (int)PkgCmdIdList.cmdidOptionShowProgress);
+                var menuCommand = new MenuCommand((sender, args) =>
+                {
+                    var menu = sender as MenuCommand;
+                    if (menu == null)
+                        return;
+
+                    menu.Checked = !menu.Checked;
+                    _optionShowProgress = menu.Checked;
                 }, menuCommandId);
                 mcs.AddCommand(menuCommand);
             }
@@ -114,7 +129,8 @@ namespace BoostTestVSPackage
         {
             var testRunnerOptions = new TestRunnerOptions
             {
-                DetectMemoryLeak = _detectMemoryLeak,
+                DetectMemoryLeak = _optionDetectMemoryLeak,
+                ShowProgress = _optionShowProgress,
                 DryRun = true,
                 WithDebugger = withDebugger,
             };

@@ -135,7 +135,18 @@
           <ButtonText>Detect memory leak</ButtonText>
           <CommandName>DetectMemoryLeak</CommandName>
           <CanonicalName>BoostTestAddin.Connect.DetectMemoryLeak</CanonicalName>
-          <ToolTipText>Detect memory leak</ToolTipText>
+          <ToolTipText>Enable boost memory leak detection</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidOptionShowProgress" priority="0x0107" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestConfigMenuGroup" />
+        <Icon guid="guidImages" id="icoDetectMemoryLeak" />
+        <Strings>
+          <ButtonText>Show progress</ButtonText>
+          <CommandName>OptionShowProgress</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.OptionShowProgress</CanonicalName>
+          <ToolTipText>Enable progress bar display</ToolTipText>
         </Strings>
       </Button>
 
@@ -182,7 +193,9 @@
       <IDSymbol name="cmdidRunCurrentTest" value="0x0101" />
       <IDSymbol name="cmdidRunCurrentSuite" value="0x0103" />
       <IDSymbol name="cmdidRunCurrentProject" value="0x0105" />
+      
       <IDSymbol name="cmdidDetectMemoryLeak" value="0x0106" />
+      <IDSymbol name="cmdidOptionShowProgress" value="0x0107" />
     </GuidSymbol>
 
 

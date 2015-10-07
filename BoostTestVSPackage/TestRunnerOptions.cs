@@ -4,11 +4,13 @@ namespace BoostTestVSPackage
     {
         public bool DryRun;
         public bool WithDebugger;
+
         public bool DetectMemoryLeak;
+        public bool ShowProgress;
 
         public override string ToString()
         {
-            return string.Format("DryRun: {0}, WithDebugger: {1}, DetectMemoryLeak: {2}", DryRun, WithDebugger, DetectMemoryLeak);
+            return $"DryRun: {DryRun}, WithDebugger: {WithDebugger}, DetectMemoryLeak: {DetectMemoryLeak}, ShowProgress: {ShowProgress}";
         }
     }
 }

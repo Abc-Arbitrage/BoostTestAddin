@@ -11,5 +11,6 @@ namespace BoostTestVSPackage
         public const uint cmdidRunCurrentProject = 0x105;
         
         public const uint cmdidDetectMemoryLeak = 0x106;
+        public const uint cmdidOptionShowProgress  = 0x107;
     };
 }
