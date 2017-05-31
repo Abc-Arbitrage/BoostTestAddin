@@ -117,7 +117,7 @@
         </Strings>
       </Button>
 
-      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentProject" priority="0x0105" type="Button">
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidRunCurrentProject" priority="0x0104" type="Button">
         <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestRunGroup" />
         <!--<Icon guid="guidImages" id="icoRun" />-->
         <Strings>
@@ -135,7 +135,29 @@
           <ButtonText>Detect memory leak</ButtonText>
           <CommandName>DetectMemoryLeak</CommandName>
           <CanonicalName>BoostTestAddin.Connect.DetectMemoryLeak</CanonicalName>
-          <ToolTipText>Detect memory leak</ToolTipText>
+          <ToolTipText>Makes the framework to detect memory leaks</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidOptionShowProgress" priority="0x0107" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestConfigMenuGroup" />
+        <Icon guid="guidImages" id="icoDetectMemoryLeak" />
+        <Strings>
+          <ButtonText>Show progress</ButtonText>
+          <CommandName>OptionShowProgress</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.OptionShowProgress</CanonicalName>
+          <ToolTipText>Makes the framework to print progress information</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidBoostTestVSPackageCmdSet" id="cmdidOptionRunInRandomOrder" priority="0x0108" type="Button">
+        <Parent guid="guidBoostTestVSPackageCmdSet" id="BoostTestConfigMenuGroup" />
+        <Icon guid="guidImages" id="icoDetectMemoryLeak" />
+        <Strings>
+          <ButtonText>Random</ButtonText>
+          <CommandName>OptionRunInRandomOrder</CommandName>
+          <CanonicalName>BoostTestAddin.Connect.OptionRunInRandomOrder</CanonicalName>
+          <ToolTipText>Makes the framework to run the test cases in random order</ToolTipText>
         </Strings>
       </Button>
 
@@ -181,8 +203,11 @@
       <IDSymbol name="cmdidDebugCurrentTest" value="0x0100" />
       <IDSymbol name="cmdidRunCurrentTest" value="0x0101" />
       <IDSymbol name="cmdidRunCurrentSuite" value="0x0103" />
-      <IDSymbol name="cmdidRunCurrentProject" value="0x0105" />
+      <IDSymbol name="cmdidRunCurrentProject" value="0x0104" />
+      
       <IDSymbol name="cmdidDetectMemoryLeak" value="0x0106" />
+      <IDSymbol name="cmdidOptionShowProgress" value="0x0107" />
+      <IDSymbol name="cmdidOptionRunInRandomOrder" value="0x0108" />
     </GuidSymbol>
 
 

@@ -14,6 +14,12 @@ namespace BoostTestVSPackage.Boost
             if (!testRunnerOptions.DetectMemoryLeak)
                 commandLineArgs += " --detect_memory_leaks=0";
 
+            if (testRunnerOptions.ShowProgress)
+                commandLineArgs += " --show_progress=yes";
+
+            if (testRunnerOptions.RunInRandomOrder)
+                commandLineArgs += " --random=1";
+
             return commandLineArgs;
         }
     }
