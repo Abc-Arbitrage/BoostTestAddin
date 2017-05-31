@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="0a66f06a-ea9f-449b-bb85-02e20553b898" Version="1.6.0" Language="en-US" Publisher="ABC arbitrage Asset Management" />
+    <Identity Id="0a66f06a-ea9f-449b-bb85-02e20553b898" Version="1.6.1" Language="en-US" Publisher="ABC arbitrage Asset Management" />
     <DisplayName>BoostTestVSPackage</DisplayName>
     <Description xml:space="preserve">Manage boost tests directly from visual studio</Description>
     <License>LICENSE</License>

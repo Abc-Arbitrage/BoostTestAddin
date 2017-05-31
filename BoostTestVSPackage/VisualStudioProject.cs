@@ -3,6 +3,7 @@ using BoostTestVSPackage.Interfaces;
 using BoostTestVSPackage.Utils;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio.VCProjectEngine;
 
 namespace BoostTestVSPackage
 {
@@ -29,8 +30,23 @@ namespace BoostTestVSPackage
             if (_dryRun)
                 return;
 
-            var config = _project.ConfigurationManager.ActiveConfiguration;
-            config.Properties.Item("CommandArguments").Value = arguments;
+            var vcproj = _project.Object as VCProject;
+            if (vcproj == null)
+            {
+                Logger.Write("Cannot cast _project.Object to VCProject.");
+                return;
+            }
+
+            var vcconfig = vcproj.ActiveConfiguration;
+            var vcdebug = vcconfig.DebugSettings as VCDebugSettings;
+
+            if (vcdebug == null)
+            {
+                Logger.Write("Cannot retrieve VCDebugSettings.");
+                return;
+            }
+
+            vcdebug.CommandArguments = arguments;
         }
 
         public void SetProjectAsStartup()
